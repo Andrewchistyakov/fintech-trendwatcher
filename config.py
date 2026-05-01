@@ -11,5 +11,10 @@ KEYWORDS = [
     "visa", "mastercard"
 ]
 
+TITLE_BANWORDS = [
+    "2025", "2024", "2023", "2022", "2021", "2020",
+    "opinion"
+]
+
 TOP_K = 3
 SIMILARITY_THRESHOLD = 0.85

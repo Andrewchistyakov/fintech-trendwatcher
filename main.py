@@ -1,4 +1,4 @@
-from config import FEEDS, KEYWORDS, TOP_K
+from config import FEEDS, KEYWORDS, TITLE_BANWORDS, TOP_K
 
 from data.loader import load_articles
 from processing.dedup import deduplicate
@@ -15,7 +15,7 @@ def main():
     articles = deduplicate(articles)
     print(f"After dedup: {len(articles)}")
 
-    articles = [a for a in articles if is_relevant(a, KEYWORDS)]
+    articles = [a for a in articles if is_relevant(a, KEYWORDS, TITLE_BANWORDS)]
     print(f"Relevant: {len(articles)}")
 
     for a in articles:
