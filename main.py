@@ -31,7 +31,7 @@ def main():
     for i, article in enumerate(top, 1):
         print("=" * 60)
         print(f"{i}. {article['title']}")
-        print(build_card(article))
+        # print(build_card(article))
 
 if __name__ == "__main__":
     main()

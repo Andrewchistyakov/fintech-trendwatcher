@@ -1,12 +1,12 @@
 FEEDS = [
     # RU
-    "https://www.rbc.ru/rss/rbcnews.rss",
-    "https://www.kommersant.ru/RSS/news.xml",
+    "https://rssexport.rbc.ru/rbcnews/news/30/full.rss",
+    "https://www.kommersant.ru/RSS/main.xml",
     "https://www.forbes.ru/newrss.xml",
     "https://vc.ru/rss",
-    "https://habr.com/ru/rss/hub/finances/",
+    "https://habr.com/ru/rss/hub/finance/",
     "https://forklog.com/feed/",
-    "https://www.cbr.ru/rss/press.xml",
+    "http://www.cbr.ru/rss/RssPress",
 
     # EN
     "https://cointelegraph.com/rss",
