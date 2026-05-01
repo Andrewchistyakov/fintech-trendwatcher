@@ -1,8 +1,8 @@
 FEEDS = [
-    "https://finextra.com/rss",
-    "https://cointelegraph.com/rss",
-    "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
-    "https://feeds.feedburner.com/TechCrunch/",
+    # "https://finextra.com/rss",
+    # "https://cointelegraph.com/rss",
+    # "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+    # "https://feeds.feedburner.com/TechCrunch/",
     "https://www.rbc.ru/rss/rbcnews.rss",
     "https://www.kommersant.ru/RSS/news.xml",
     "https://www.forbes.ru/newrss.xml",
