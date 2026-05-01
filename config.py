@@ -1,14 +1,16 @@
 FEEDS = [
-    # "https://finextra.com/rss",
-    # "https://cointelegraph.com/rss",
-    # "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
-    # "https://feeds.feedburner.com/TechCrunch/",
+    # RU
     "https://www.rbc.ru/rss/rbcnews.rss",
     "https://www.kommersant.ru/RSS/news.xml",
     "https://www.forbes.ru/newrss.xml",
-    "https://www.rc.ru/rss",
+    "https://vc.ru/rss",
     "https://habr.com/ru/rss/hub/finances/",
-    "https://forklog.com/feed"
+    "https://forklog.com/feed/",
+    "https://www.cbr.ru/rss/press.xml",
+
+    # EN
+    "https://cointelegraph.com/rss",
+    "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
 
 ]
 

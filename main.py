@@ -6,6 +6,8 @@ from processing.filter import is_relevant
 from scoring.scorer import score
 from utils.text import format_article
 
+from llm.fintech_prompt import build_card
+
 
 def main():
     print("Loading articles...")
@@ -27,8 +29,9 @@ def main():
     print("\n=== TOP SIGNALS ===\n")
 
     for i, article in enumerate(top, 1):
-        print(format_article(article, i))
-
+        print("=" * 60)
+        print(f"{i}. {article['title']}")
+        print(build_card(article))
 
 if __name__ == "__main__":
     main()
