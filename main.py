@@ -38,11 +38,13 @@ def main():
     top = relevant[:TOP_K]
 
     print("\n=== TOP SIGNALS ===\n")
+    text = ''
 
     for i, article in enumerate(top, 1):
-        print("=" * 60)
-        print(f"{i}. {article['title']}")
-        print(build_card(article))
+        text += f"{i}. {article['title']}\n"
+        text += article['summary'] + '\n'
+    
+    print(build_card(text))
 
 if __name__ == "__main__":
     main()

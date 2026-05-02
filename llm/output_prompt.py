@@ -1,9 +1,9 @@
 from llm.openrouter_client import generate
 
-def build_card(article):
+def build_card(text):
     prompt = f"""
 Ты аналитик финтех-рынка.
-Сделай карточку финтех-новости:
+Выдели ключевые моменты из новостей финтех-рынка и сделай для каждой новости карточку:
 
 Формат:
 
@@ -13,9 +13,8 @@ def build_card(article):
 <Краткое резюме>
 <Риски / возможности>
 
-Новость:
-{article['title']}
-{article['summary']}
+Новости:
+{text}
 """
 
     return generate(prompt)
