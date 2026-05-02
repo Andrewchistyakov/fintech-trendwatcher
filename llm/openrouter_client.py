@@ -4,7 +4,7 @@ from keys import OPENROUTER_KEY
 
 URL = "https://openrouter.ai/api/v1/chat/completions"
 
-MODEL = "qwen/qwen3.6-35b-a3b"# "qwen/qwen3.6-flash"  
+MODEL = "qwen/qwen3.6-35b-a3b" # "qwen/qwen3.6-flash"  
 
 
 def generate(prompt: str) -> str:

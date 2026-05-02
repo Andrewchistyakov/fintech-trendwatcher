@@ -7,7 +7,7 @@ from processing.clustering import cluster_articles, pick_representative
 from scoring.scorer import score
 from utils.text import format_article
 
-from llm.fintech_prompt import build_card
+from llm.output_prompt import build_card
 
 
 def main():
@@ -29,7 +29,13 @@ def main():
         signals.append(rep)
 
     signals = sorted(signals, key=lambda x: x["score"], reverse=True)
-    top = signals[:TOP_K]
+    relevant = []
+    for signal in signals:
+        if is_relevant(signal, KEYWORDS, TITLE_BANWORDS):
+            relevant.append(signal)
+    print('Relevant articles: ', len(relevant))
+
+    top = relevant[:TOP_K]
 
     print("\n=== TOP SIGNALS ===\n")
 

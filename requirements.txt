@@ -2,6 +2,5 @@ sentence-transformers
 requests
 feedparser
 scikit-learn
-torch
-accelerate
-sentencepiece
+bs4
+
