@@ -1,4 +1,4 @@
-from llm.ollama_client import generate
+from llm.openrouter_client import generate
 
 def build_card(article):
     prompt = f"""
