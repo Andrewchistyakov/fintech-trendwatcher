@@ -1,4 +1,4 @@
-def score(article):
+def score(article, cluster_size):
     text = (article["title"] + " " + article["summary"]).lower()
 
     score = 0
@@ -13,6 +13,9 @@ def score(article):
         score += 3
     if "partnership" in text:
         score += 2
+
+    # усиливаем, если много источников (кластер большой)
+    score += min(cluster_size * 2, 6)
 
     score += min(len(text) // 200, 3)
 

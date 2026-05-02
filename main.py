@@ -3,6 +3,7 @@ from config import FEEDS, KEYWORDS, TITLE_BANWORDS, TOP_K
 from data.loader import load_articles
 from processing.dedup import deduplicate
 from processing.filter import is_relevant
+from processing.clustering import cluster_articles, pick_representative
 from scoring.scorer import score
 from utils.text import format_article
 
@@ -14,17 +15,21 @@ def main():
     articles = load_articles(FEEDS)
     print(f"Loaded: {len(articles)}")
 
-    articles = deduplicate(articles)
-    print(f"After dedup: {len(articles)}")
+    clusters = cluster_articles(articles)
+    print(f"Clusters: {len(clusters)}")
 
-    articles = [a for a in articles if is_relevant(a, KEYWORDS, TITLE_BANWORDS)]
-    print(f"Relevant: {len(articles)}")
+    signals = []
 
-    for a in articles:
-        a["score"] = score(a)
+    for cluster in clusters:
+        rep = pick_representative(cluster)
 
-    articles = sorted(articles, key=lambda x: x["score"], reverse=True)
-    top = articles[:TOP_K]
+        rep["score"] = score(rep, cluster_size=len(cluster))
+        rep["cluster_size"] = len(cluster)
+
+        signals.append(rep)
+
+    signals = sorted(signals, key=lambda x: x["score"], reverse=True)
+    top = signals[:TOP_K]
 
     print("\n=== TOP SIGNALS ===\n")
 
