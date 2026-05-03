@@ -1,12 +1,12 @@
 from datetime import datetime, timedelta
 
 
-def is_relevant(article, keywords, title_banwords):
+def is_relevant(article):
     now = datetime.utcnow()
-    cutoff = now - timedelta(hours=24)
+    cutoff = now - timedelta(days=7)
 
-    if datetime(*article["published_parsed"][:6]) < cutoff:
-        return False
-
-    text = (article["title"] + " " + article["summary"]).lower()
-    return any(k in text for k in keywords) and not any(k in article["title"] for k in title_banwords)
+    return datetime(*article["published_parsed"][:6]) > cutoff
+    
+    
+    
+    

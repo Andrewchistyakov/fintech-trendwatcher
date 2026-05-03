@@ -1,10 +1,10 @@
 from config import FEEDS, KEYWORDS, TITLE_BANWORDS, TOP_K
 
 from data.loader import load_articles
-from processing.dedup import deduplicate
+# from processing.dedup import deduplicate
 from processing.filter import is_relevant
 from processing.clustering import cluster_articles, pick_representative
-from scoring.scorer import score
+from scoring.scorer import semantic_scores, score_cluster
 from utils.text import format_article
 
 from llm.output_prompt import build_card
@@ -19,19 +19,22 @@ def main():
     print(f"Clusters: {len(clusters)}")
 
     signals = []
-
     for cluster in clusters:
         rep = pick_representative(cluster)
+        score = score_cluster(cluster, rep)
 
-        rep["score"] = score(rep, cluster_size=len(cluster))
-        rep["cluster_size"] = len(cluster)
-
-        signals.append(rep)
+        signals.append({
+            "rep": rep,
+            "score": score,
+            "size": len(cluster),
+            'published_parsed': rep['published_parsed']
+        })
 
     signals = sorted(signals, key=lambda x: x["score"], reverse=True)
+    print('Signals: ', len(signals))
     relevant = []
     for signal in signals:
-        if is_relevant(signal, KEYWORDS, TITLE_BANWORDS):
+        if is_relevant(signal):
             relevant.append(signal)
     print('Relevant articles: ', len(relevant))
 
@@ -41,10 +44,12 @@ def main():
     text = ''
 
     for i, article in enumerate(top, 1):
-        text += f"{i}. {article['title']}\n"
-        text += article['summary'] + '\n'
+        art = article['rep']
+        text += f"{i}. {art['title']}\n"
+        text += art['summary'] + '\n'
     
     print(build_card(text))
+    
 
 if __name__ == "__main__":
     main()

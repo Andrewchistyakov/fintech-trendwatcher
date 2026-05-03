@@ -3,4 +3,6 @@ requests
 feedparser
 scikit-learn
 bs4
-
+fasttext
+pathlib
+numpy==1.26.4
