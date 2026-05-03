@@ -27,7 +27,8 @@ def main():
             "rep": rep,
             "score": score,
             "size": len(cluster),
-            'published_parsed': rep['published_parsed']
+            'published_parsed': rep['published_parsed'],
+            'link': rep['link']
         })
 
     signals = sorted(signals, key=lambda x: x["score"], reverse=True)
@@ -40,6 +41,10 @@ def main():
 
     top = relevant[:TOP_K]
 
+    sources = set()
+    for a in top:
+        sources.add(a['link'])
+
     print("\n=== TOP SIGNALS ===\n")
     text = ''
 
@@ -49,6 +54,9 @@ def main():
         text += art['summary'] + '\n'
     
     print(build_card(text))
+    print('=== SOURCES === \n')
+    for s in sources:
+        print(s)
     
 
 if __name__ == "__main__":
