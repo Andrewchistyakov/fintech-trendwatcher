@@ -20,6 +20,20 @@ FEEDS = [
     "https://www.fintechfutures.com/feed/",
     "https://www.financemagnates.com/fintech/feed/",
 
+    "https://www.finextra.com/rss/headlines.aspx",
+    "https://www.finextra.com/rss/ci.aspx",
+    "https://thefintechtimes.com/feed",
+    "https://www.financemagnates.com/fintech/feed/",
+    "https://dailyfintech.com/feed",
+    "https://techcrunch.com/tag/fintech/feed",
+    "https://finovate.com/feed",
+    "https://www.pymnts.com/feed",
+    "https://www.americanbanker.com/feed?rss=true",
+    "https://www.paymentsdive.com/feeds/news",
+    "https://www.fintechweekly.com/news.rss",
+    "https://fintechnews.sg/feed",
+    "https://fintechnews.hk/feed",
+
 ]
 
 KEYWORDS = [
